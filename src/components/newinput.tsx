@@ -1,7 +1,8 @@
-import addpath from './path'
+import addpath from './newpath'
+import station from './mkclass'
 type Props = {
-    path : string[];
-    setpath :(path:string[]) =>void;
+    path : station[];
+    setpath :(path:station[]) =>void;
     city: string;
     setcity: (city: string) => void;
 };
@@ -21,3 +22,5 @@ export function Input({path,setpath,city,setcity}:Props){
     );
 }
 export default Input
+
+{/*complete*/}

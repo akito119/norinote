@@ -1,20 +1,23 @@
 import React, { useState,FC } from 'react'
+import station from './mkclass'
+import getStation from './acceseAPI'
 type Props = {
-    path : string[];
-    setpath :(path:string[]) =>void;
+    path : station[];
+    setpath :(path:station[]) =>void;
     city: string;
     setcity: (city: string) => void;
 };
-function addpath({path,setpath,city,setcity}:Props){
+async function addpath({path,setpath,city,setcity}:Props){
     if(city ===""){
         alert("データを入力してください");
         return ;
     }
-    let p:string[] = [];
+    let p:station[] = [];
     for(let i = 0;i<path.length;i++){
         p.push(path[i]);
     }
-    p.push(city);
+    const sta = await getStation(city);
+    p.push(sta)
     setpath(p);
 }
 export const Reset:FC<Props> = ({path,setpath,city,setcity}:Props)=>{
@@ -26,7 +29,7 @@ export const Reset:FC<Props> = ({path,setpath,city,setcity}:Props)=>{
 }
 export const PrintPath:FC<Props> = ({path,setpath,city,setcity}:Props)=>{
     const [pathflag,setpathflag] = useState(false);
-    const list = path.map((item, index) => <li key={index}>{item}</li>);
+    const list = path.map((item, index) => <li key={index}>{item.name}</li>);
     return(
         <>
         {pathflag ?
@@ -36,3 +39,5 @@ export const PrintPath:FC<Props> = ({path,setpath,city,setcity}:Props)=>{
     );
 }
 export default addpath
+
+{/*complete*/}

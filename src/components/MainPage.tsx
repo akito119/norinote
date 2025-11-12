@@ -1,12 +1,13 @@
 import React, { useState,useEffect } from 'react'
-import Input from './input'
+import Input from './newinput'
 import getlocate from './getlocate'
-import {PrintPath,Reset} from './path'
+import {PrintPath,Reset} from './newpath'
+import station from './mkclass';
 function MainPage(){
     const [city,setcity] = useState("東京");
     const [lat,setlat] = useState(0); 
     const [lon,setlon] = useState(0);
-    const [path,setpath] = useState([" "]);
+    const [path,setpath] = useState([new station()]);
     useEffect(()=>{getlocate({ lat, setlat: setlat, lon, setlon: setlon })},[]);
     useEffect(()=>{alert("このページは位置情報を使用しますが、取得した情報はこの端末内でのみ処理され、外部には送信されません。")},[]);
     return(

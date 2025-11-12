@@ -7,7 +7,7 @@ type Props = {
 
 
 function getlocate({lat,setlat,lon,setlon}:Props){
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
         (position) => {
             setlat(position.coords.latitude);
             setlon(position.coords.longitude);
