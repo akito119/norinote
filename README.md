@@ -1,46 +1,43 @@
-# Getting Started with Create React App
+# Norinote
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Norinote は、現在地追跡と経路管理ができる React + TypeScript 製の Web アプリケーションです。  
+地図や駅情報 API を活用し、ユーザーが自由に経路を追加・編集しながらリアルタイムに位置情報を追跡できます。
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## デモ
 
-### `npm start`
+- 現在、ローカルで動作確認可能です。  
+- 追跡中に乗換駅を追加しても削除されず、追跡の進行と共に現在地のみ更新されます。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 主な機能
 
-### `npm test`
+### 1. 現在地追跡
+- 「追跡開始」ボタンで現在地を取得し、500ms ごとに更新
+- 「追跡終了」ボタンで追跡を停止
+- 追跡中もユーザーが追加した駅情報は保持
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. 経路管理
+- 駅の追加・削除が可能
+- 乗換駅も追加可能
+- 経路の表示順序は自由に管理
 
-### `npm run build`
+### 3. アラーム・通知
+- 現在地の情報に応じてアラーム音を鳴らす機能あり
+- `buzzer.tsx` 内で音声再生を制御
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. API 連携
+- Heartrails API を利用し、駅名から座標を取得 (`acceseAPI.ts`)
+- 位置情報取得にはブラウザの Geolocation API を使用 (`getlocete.ts`)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 技術スタック
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React 18  
+- TypeScript  
+- HTML / CSS  
+- Fetch API（外部駅情報取得）  
+- React Hooks（useState, useEffect, useRef）  
