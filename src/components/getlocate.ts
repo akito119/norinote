@@ -1,12 +1,10 @@
 type Props = {
-    lat : number;
     setlat : (lat : number) => void;
-    lon : number;
     setlon : (lon : number) => void;
 };
 
 
-function getlocate({lat,setlat,lon,setlon}:Props){
+function getlocate({setlat,setlon}:Props){
     navigator.geolocation.watchPosition(
         (position) => {
             setlat(position.coords.latitude);
